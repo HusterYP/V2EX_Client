@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/hot_node"
+        android:title="@string/hot_nodes"/>
+
+    <item
+        android:id="@+id/new_node"
+        android:title="最新"/>
+
+    <item
+        android:id="@+id/tech_node"
+        android:title="@string/technology"/>
+
+    <item
+        android:id="@+id/idea_node"
+        android:title="@string/idea"/>
+
+    <item
+        android:id="@+id/fun_node"
+        android:title="好玩"/>
+    <item
+        android:id="@+id/apple_node"
+        android:title="Apple"/>
+
+    <item
+        android:id="@+id/job_node"
+        android:title="酷工作"/>
+
+
+</menu>

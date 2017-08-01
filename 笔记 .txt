@@ -1,0 +1,88 @@
+1. jsoup库使用
+https://www.ibm.com/developerworks/cn/java/j-lo-jsouphtml/index.html
+http://www.yiibai.com/jsoup/jsoup-quick-start.html#article-start
+
+2. Android studio玩家可以不下载jar包,在Gradle里面加入
+dependencies {
+    compile 'org.jsoup:jsoup:1.9.2'
+}
+
+3.
+Document doc = Jsoup.connect("http://example.com")
+  .data("query", "Java")
+  .userAgent("Mozilla")
+  .cookie("auth", "token")
+  .timeout(3000)
+  .post();
+  
+4. jsoupx	
+tagname	使用标签名来定位，例如 a
+ns|tag	使用命名空间的标签定位，例如 fb:name 来查找 <fb:name> 元素
+#id	使用元素 id 定位，例如 #logo
+.class	使用元素的 class 属性定位，例如 .head
+[attribute]	使用元素的属性进行定位，例如 [href] 表示检索具有 href 属性的所有元素
+[^attr]	使用元素的属性名前缀进行定位，例如 [^data-] 用来查找 HTML5 的 dataset 属性
+[attr=value]	使用属性值进行定位，例如 [width=500] 定位所有 width 属性值为 500 的元素
+[attr^=value], [attr$=value], [attr*=value]	这三个语法分别代表，属性以 value 开头、结尾以及包含
+[attr~=regex]	使用正则表达式进行属性值的过滤，例如 img[src~=(?i)\.(png|jpe?g)]
+*	定位所有元素
+
+el#id	定位 id 值某个元素，例如 a#logo -> <a id=logo href= … >
+el.class	定位 class 为指定值的元素，例如 div.head -> <div class=head>xxxx</div>
+el[attr]	定位所有定义了某属性的元素，例如 a[href]
+以上三个任意组合	例如 a[href]#logo 、a[name].outerlink
+ancestor child	这五种都是元素之间组合关系的选择器语法，其中包括父子关系、合并关系和层次关系。
+parent > child
+siblingA + siblingB
+siblingA ~ siblingX
+el, el, el
+
+
+
+:lt(n)	例如 td:lt(3) 表示 小于三列
+:gt(n)	div p:gt(2) 表示 div 中包含 2 个以上的 p
+:eq(n)	form input:eq(1) 表示只包含一个 input 的表单
+:has(seletor)	div:has(p) 表示包含了 p 元素的 div
+:not(selector)	div:not(.logo) 表示不包含 class=logo 元素的所有 div 列表
+:contains(text)	包含某文本的元素，不区分大小写，例如 p:contains(oschina)
+:containsOwn(text)	文本信息完全等于指定条件的过滤
+:matches(regex)	使用正则表达式进行文本过滤：div:matches((?i)login)
+:matchesOwn(regex)	使用正则表达式找到自身的文本
+
+5. 存在问题
+	对于回复的内容如果是多页的情况下如何获取全部的内容？
+	为什么RecyclerView无法match_parent,但是我设置的明明是match_parent啊，（通过实验，把show_item中最后的线性布局改成相对布局即可
+	其他几个出现RecyclerView的地方同样用此法解决了，但是为什么呢，还有网上看了很多解释，为什么在onCreateViewHolder中
+	View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_item, null,false);
+	将倒数第二个参数null改成parent就会崩溃呢？报空指针，但是网上说这样可以解决我的问题，而且实验的时候只出现显示一个条目就无法显示了？
+	这种情况出现在使用
+	View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.show_item, null,false);
+	的时候，但是使用
+    View view = View.inflate(mContext,R.layout.show_item,null);
+	的时候就没问题，二者有什么区别？
+
+）
+
+
+6.函数
+	ByTag
+	ById
+	ByClass	: 根据样式名称查询DOM
+	ByAttribute: 根据属性名称查询
+	ByAttributeValue: 通过具体的键值对的形式来查询
+	select: 选择器（id:'#';class:'.'）
+	(select(a[href]))//带有href属性的a元素
+	(select("img[src$=.png]"))//$表示以什么结尾
+	attr：获取属性值
+
+7. 链接：
+	Gson介绍：http://lib.csdn.net/article/javaee/67744（同时包含了如何通过json文件快速生成class的插件介绍）
+	Gson用法：http://www.letiantian.me/2014-05-22-java-gson-json/
+	要注意有时候用GsonFormat将json实例生成class类的时候，如果json实例扥内容太长（就是每个属性的值太长）的话，
+	生成class了会很慢，可以将属性的内容去掉
+			
+			
+			
+			
+
+	

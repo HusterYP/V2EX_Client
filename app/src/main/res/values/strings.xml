@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">V2EXNetSpider_2</string>
+    <string name="technology">技术</string>
+    <string name="idea">创意</string>
+    <string name="postscript">附言</string>
+    <string name="postAnswer">回复</string>
+    <string name="hot_nodes">最热</string>
+</resources>
